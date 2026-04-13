@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zuleiha Yunusa Ugbede | Executive Virtual Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #07111E;
+  --navy-mid: #0D1B2E;
+  --navy-light: #162538;
+  --gold: #C9A84C;
+  --gold-light: #E2C06A;
+  --gold-pale: #FAF0D7;
+  --ivory: #FBF5E6;
+  --ivory-dark: #EFE5CC;
+  --charcoal: #1A1A2E;
+  --gray: #5C6470;
+  --gray-light: #9AA3AF;
+  --white: #FFFFFF;
+  --border: rgba(201,168,76,0.25);
+  --border-light: rgba(201,168,76,0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--charcoal);
+  background: var(--ivory);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ─────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ── NAVIGATION ─────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 3rem;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(7,17,30,0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+}
+.nav-logo {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+.nav-logo em { color: var(--gold); font-style: normal; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 6px;
+  cursor: pointer; background: none; border: none;
+}
+.hamburger span { width: 24px; height: 1.5px; background: white; display: block; transition: 0.3s; }
+.mobile-nav {
+  position: fixed; top: 72px; left: 0; right: 0;
+  background: var(--navy);
+  padding: 2rem;
+  transform: translateY(-120%);
+  transition: transform 0.4s cubic-bezier(0.77,0,0.175,1);
+  z-index: 999;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-nav.open { transform: translateY(0); }
+.mobile-nav a {
+  display: block; color: rgba(255,255,255,0.8);
+  text-decoration: none; padding: 1rem 0;
+  font-size: 1rem; font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  letter-spacing: 0.5px;
+}
+.mobile-nav a:hover { color: var(--gold); }
+
+/* ── HERO ─────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  padding: 8rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+/* Geometric background elements */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -15%; left: -8%;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-grid-lines {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-accent-line {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 1px; height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.25), transparent);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  max-width: 860px;
+  text-align: center;
+  z-index: 1;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--gold);
+}
+.hero-eyebrow span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.hero-name {
+  font-family: 'Cormorant Garant', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.0;
+  margin-bottom: 0.5rem;
+  opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+  letter-spacing: -1px;
+}
+.hero-name em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-title {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-location {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.85rem;
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+}
+.hero-location svg { color: var(--gold); }
+.hero-cta {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 4rem;
+  opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+}
+
+.btn {
+  padding: 0.9rem 2rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,168,76,0.4); }
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+.hero-divider {
+  width: 100%; height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin-bottom: 3rem;
+  opacity: 0; animation: fadeUp 0.8s 0.95s forwards;
+}
+.hero-stats {
+  display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s 1.1s forwards;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+.stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.45); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem; display: block; }
+
+/* ── AVAILABILITY BANNER ─────────────────────── */
+.availability-bar {
+  background: var(--gold);
+  padding: 0.65rem 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy);
+  display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+}
+.availability-bar .pulse-dot {
+  width: 7px; height: 7px;
+  background: var(--navy);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.4; transform:scale(0.8);} }
+
+/* ── SECTIONS ─────────────────────── */
+section { padding: 6rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+
+.section-eyebrow {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1rem;
+}
+.section-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.section-eyebrow span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.section-title {
+  font-family: 'Cormorant Garant', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-desc {
+  color: var(--gray);
+  max-width: 580px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 3.5rem;
+}
+
+/* ── ABOUT ─────────────────────── */
+#about { background: var(--ivory); }
+.about-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.about-sidebar {
+  position: sticky; top: 6rem;
+}
+.about-card {
+  background: var(--navy);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.about-card-top {
+  background: var(--navy-light);
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.about-card-top::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+}
+.about-monogram {
+  width: 80px; height: 80px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 auto 1.25rem;
+}
+.about-card-top h3 {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.about-card-top p {
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.about-card-body { padding: 1.75rem 2rem; }
+.contact-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.82rem;
+}
+.contact-item:last-child { border-bottom: none; }
+.contact-item svg { color: var(--gold); flex-shrink: 0; }
+.contact-item a, .contact-item span { color: rgba(255,255,255,0.7); text-decoration: none; }
+.contact-item a:hover { color: var(--gold); }
+.avail-badge {
+  margin-top: 1.5rem;
+  background: rgba(198,151,63,0.1);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.75rem 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.about-main h3 {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+.about-main h3 em { font-style: italic; color: var(--gold); }
+.about-main p { color: var(--gray); font-size: 0.95rem; line-height: 1.9; margin-bottom: 1.25rem; }
+
+.value-props { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.value-prop {
+  background: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+.value-prop .vp-icon { color: var(--gold); margin-bottom: 0.5rem; }
+.value-prop h4 { font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+.value-prop p { font-size: 0.78rem; color: var(--gray-light); margin: 0; line-height: 1.6; }
+
+/* ── SERVICES ─────────────────────── */
+#services { background: var(--navy); }
+#services .section-title { color: var(--white); }
+#services .section-desc { color: var(--gray-light); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.service-card {
+  background: var(--navy-mid);
+  padding: 2.25rem 2rem;
+  transition: background 0.3s;
+  position: relative;
+}
+.service-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 2rem; right: 2rem;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.service-card:hover { background: var(--navy-light); }
+.service-card:hover::after { transform: scaleX(1); }
+.service-num {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: rgba(198,151,63,0.15);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.service-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; letter-spacing: 0.3px; }
+.service-card p { font-size: 0.83rem; color: var(--gray-light); line-height: 1.7; }
+.service-icon { margin-bottom: 1rem; color: var(--gold); }
+
+/* ── TOOLS ─────────────────────── */
+#tools { background: var(--ivory); }
+.tools-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.tools-group {
+  background: var(--white);
+  border: 1px solid var(--ivory-dark);
+  border-radius: 4px;
+  padding: 2rem;
+}
+.tools-group-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--ivory-dark);
+}
+.tools-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tool-pill {
+  background: var(--ivory);
+  border: 1px solid var(--ivory-dark);
+  border-radius: 2px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  transition: all 0.2s;
+}
+.tool-pill:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+/* ── EXPERIENCE ─────────────────────── */
+#experience { background: var(--white); }
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 180px 1px 1fr;
+  gap: 0 2rem;
+  padding-bottom: 3rem;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.tl-meta { text-align: right; padding-top: 0.15rem; }
+.tl-period {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.tl-company {
+  font-size: 0.75rem;
+  color: var(--gray);
+  line-height: 1.4;
+}
+.tl-line {
+  width: 1px;
+  background: var(--border);
+  position: relative;
+}
+.tl-line::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+.tl-content { padding-top: 0; }
+.tl-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.tl-bullets li {
+  font-size: 0.85rem;
+  color: var(--gray);
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.7;
+}
+.tl-bullets li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--gold);
+  font-size: 0.75rem;
+  top: 2px;
+}
+
+/* ── PORTFOLIO ─────────────────────── */
+#portfolio { background: var(--ivory); }
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.portfolio-card {
+  background: var(--white);
+  border: 1px solid var(--ivory-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s;
+  position: relative;
+}
+.portfolio-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(13,27,42,0.1); }
+.portfolio-card:hover::before { transform: scaleX(1); }
+.portfolio-card-header {
+  background: var(--navy);
+  padding: 1.75rem 2rem;
+}
+.portfolio-card-header h3 {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+}
+.portfolio-card-header p { font-size: 0.75rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; }
+.portfolio-card-body { padding: 1.75rem 2rem; }
+.portfolio-card-body p { font-size: 0.85rem; color: var(--gray); line-height: 1.8; margin-bottom: 1.25rem; }
+.portfolio-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.ptag {
+  background: var(--gold-pale);
+  color: var(--charcoal);
+  padding: 0.2rem 0.65rem;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ── SKILLS VISUAL ─────────────────────── */
+#skills { background: var(--navy); padding: 5rem 2rem; }
+#skills .section-title { color: var(--white); }
+#skills .section-eyebrow .line { background: rgba(198,151,63,0.3); }
+.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+.skill-category-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.skill-bar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.skill-bar-item:last-child { border-bottom: none; }
+.skill-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+}
+.skill-level {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.skill-level.expert {
+  background: var(--gold);
+  color: var(--navy);
+}
+.skill-level.advanced {
+  background: rgba(201,168,76,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.35);
+}
+.skill-level.proficient {
+  background: rgba(255,255,255,0.06);
+  color: var(--gray-light);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ── EDUCATION ─────────────────────── */
+#education { background: var(--white); }
+.edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
+.edu-card {
+  border: 1px solid var(--ivory-dark);
+  border-radius: 4px;
+  padding: 1.75rem;
+  transition: all 0.2s;
+  border-left: 3px solid var(--gold);
+}
+.edu-card:hover { box-shadow: 0 8px 24px rgba(13,27,42,0.08); transform: translateY(-2px); }
+.edu-card svg { color: var(--gold); margin-bottom: 0.75rem; }
+.edu-degree { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; }
+.edu-school { font-size: 0.82rem; color: var(--gray); margin-bottom: 0.25rem; }
+.edu-year { font-size: 0.75rem; color: var(--gold); font-weight: 600; letter-spacing: 0.5px; }
+
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; }
+.cert-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: var(--ivory);
+  border: 1px solid var(--ivory-dark);
+  border-radius: 3px;
+  padding: 0.85rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  transition: all 0.2s;
+}
+.cert-item:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.cert-item:hover svg { color: var(--gold); }
+.cert-item svg { color: var(--gold); flex-shrink: 0; }
+
+/* ── CONTACT ─────────────────────── */
+#contact { background: var(--navy); }
+#contact .section-title { color: var(--white); }
+#contact .section-desc { color: var(--gray-light); }
+.contact-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 1rem; }
+.contact-link-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  display: flex; align-items: center; gap: 1rem;
+  transition: all 0.3s;
+}
+.contact-link-card:hover { background: rgba(198,151,63,0.08); border-color: var(--gold); transform: translateX(4px); }
+.contact-link-card svg { color: var(--gold); flex-shrink: 0; }
+.contact-link-card h4 { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.15rem; }
+.contact-link-card p { font-size: 0.85rem; color: rgba(255,255,255,0.7); word-break: break-all; }
+
+.contact-form-wrap {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2.5rem;
+}
+.contact-form-wrap h3 {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.contact-form-wrap p { font-size: 0.85rem; color: var(--gray-light); margin-bottom: 2rem; }
+.form-group { margin-bottom: 1rem; }
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 3px;
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.07);
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); font-size: 0.82rem; }
+.form-group textarea { min-height: 110px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-note { font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 0.75rem; text-align: center; }
+
+.contact-meta {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.5px;
+}
+
+/* ── FOOTER ─────────────────────── */
+footer {
+  background: #080f18;
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.5px;
+}
+footer em { color: var(--gold); font-style: normal; }
+
+/* ── BACK TO TOP ─────────────────────── */
+.btt {
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 42px; height: 42px;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  opacity: 0; visibility: hidden;
+  transition: all 0.3s;
+  z-index: 100;
+}
+.btt.show { opacity: 1; visibility: visible; }
+.btt:hover { background: var(--gold-light); transform: translateY(-3px); }
+
+/* ── ANIMATIONS ─────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── RESPONSIVE ─────────────────────── */
+@media (max-width: 900px) {
+  .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-sidebar { position: static; }
+  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .tl-meta { text-align: left; display: flex; gap: 1rem; align-items: center; }
+  .tl-line { display: none; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 4rem 1.25rem; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .value-props { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* SVG icon sizing */
+.icon-sm { width: 16px; height: 16px; }
+.icon { width: 20px; height: 20px; }
+.icon-md { width: 24px; height: 24px; }
+</style>
+</head>
+<body>
+
+<!-- SVG Sprite -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+    <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.21 12 19.79 19.79 0 0 1 1.14 3.38 2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="ic-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="ic-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="ic-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+    <symbol id="ic-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol>
+    <symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
+    <symbol id="ic-grad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+    <symbol id="ic-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+    <symbol id="ic-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="ic-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+    <symbol id="ic-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="ic-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="ic-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+    <symbol id="ic-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+    <symbol id="ic-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="ic-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <symbol id="ic-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+  </defs>
+</svg>
+
+<!-- NAVIGATION -->
+<nav id="mainNav">
+  <div class="nav-logo">Zuleiha <em>Yunusa</em></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#tools">Tools</a>
+  <a href="#experience">Experience</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- AVAILABILITY BANNER -->
+<div class="availability-bar">
+  <span class="pulse-dot"></span>
+  Currently available for remote engagements across US, EU and EMEA time zones
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-accent-line"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span>Executive Virtual Assistant</span>
+    </div>
+    <h1 class="hero-name">Zuleiha <em>Yunusa</em><br>Ugbede</h1>
+    <p class="hero-title">Remote Operations · Calendar & Inbox · Multi-Client Coordination</p>
+    <p class="hero-location">
+      <svg class="icon-sm" style="color:var(--gold)"><use href="#ic-pin"/></svg>
+      Kano, Nigeria (EMEA) &nbsp;·&nbsp; Supporting US, EU &amp; Global Teams
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:Zuleiha00441@gmail.com" class="btn btn-gold">
+        <svg class="icon-sm"><use href="#ic-mail"/></svg>
+        Hire Me
+      </a>
+      <a href="https://www.linkedin.com/in/zuleiha-yunusa-1399b23b1" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg class="icon-sm"><use href="#ic-linkedin"/></svg>
+        LinkedIn
+      </a>
+      <a href="tel:+2347033218295" class="btn btn-ghost">
+        <svg class="icon-sm"><use href="#ic-phone"/></svg>
+        WhatsApp
+      </a>
+      <a href="zuleiha-resume.pdf" download class="btn btn-ghost" id="resumeBtn">
+        <svg class="icon-sm"><use href="#ic-dl"/></svg>
+        Resume
+      </a>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">15+</span>
+        <span class="stat-label">Tools Mastered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3+</span>
+        <span class="stat-label">Active Clients</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Remote Ready</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-eyebrow reveal"><span>Who I Am</span></div>
+    <h2 class="section-title reveal">The Assistant Executives<br><em>Actually Rely On</em></h2>
+    <div class="about-layout">
+      <div class="about-sidebar reveal">
+        <div class="about-card">
+          <div class="about-card-top">
+            <div class="about-monogram">ZY</div>
+            <h3>Zuleiha Yunusa Ugbede</h3>
+            <p>Executive Virtual Assistant</p>
+          </div>
+          <div class="about-card-body">
+            <div class="contact-item">
+              <svg class="icon-sm"><use href="#ic-pin"/></svg>
+              <span>Kano, Nigeria (EMEA)</span>
+            </div>
+            <div class="contact-item">
+              <svg class="icon-sm"><use href="#ic-mail"/></svg>
+              <a href="mailto:Zuleiha00441@gmail.com">Zuleiha00441@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <svg class="icon-sm"><use href="#ic-whatsapp"/></svg>
+              <a href="tel:+2347033218295">+234 703 321 8295</a>
+            </div>
+            <div class="contact-item">
+              <svg class="icon-sm"><use href="#ic-linkedin"/></svg>
+              <a href="https://www.linkedin.com/in/zuleiha-yunusa-1399b23b1" target="_blank" rel="noopener">linkedin.com/in/zuleiha-yunusa</a>
+            </div>
+            <div class="contact-item">
+              <svg class="icon-sm"><use href="#ic-brief"/></svg>
+              <a href="mailto:zuleihacareerservices@gmail.com">zuleihacareerservices@gmail.com</a>
+            </div>
+            <div class="avail-badge">
+              <span class="pulse-dot" style="background:var(--gold)"></span>
+              Available Immediately
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-main reveal reveal-delay-2">
+        <h3>Dedicated. Discreet.<br><em>Dependable.</em></h3>
+        <p>I am a results-driven Executive Virtual Assistant with over 5 years of remote and on-site administrative experience. I currently provide full executive support to a US-based client, handling everything from daily operations and calendar management to correspondence and multi-client coordination across time zones.</p>
+        <p>My background spans programme administration, client relations, quality assurance, career services, and school administration, giving me a broad, well-rounded foundation for supporting senior executives, directors, and business owners at the highest level.</p>
+        <p>I am also the founder of <strong>Zuleiha Career Services</strong>, where I write professional CVs, LinkedIn profiles, and cover letters for clients across Nigeria and internationally. Running my own business gives me a genuine understanding of what executives need and the standard they expect when it is delivered.</p>
+        <div class="value-props">
+          <div class="value-prop">
+            <div class="vp-icon"><svg class="icon-sm"><use href="#ic-globe"/></svg></div>
+            <h4>Multi-Timezone Coverage</h4>
+            <p>Available across US, EU, and EMEA business hours without compromise.</p>
+          </div>
+          <div class="value-prop">
+            <div class="vp-icon"><svg class="icon-sm"><use href="#ic-lock"/></svg></div>
+            <h4>Discretion Guaranteed</h4>
+            <p>Sensitive information handled with full professionalism and confidentiality.</p>
+          </div>
+          <div class="value-prop">
+            <div class="vp-icon"><svg class="icon-sm"><use href="#ic-check"/></svg></div>
+            <h4>Zero Micromanagement</h4>
+            <p>I operate independently, stay on top of what matters, and only escalate what genuinely needs your attention.</p>
+          </div>
+          <div class="value-prop">
+            <div class="vp-icon"><svg class="icon-sm"><use href="#ic-star"/></svg></div>
+            <h4>Business Operator Mindset</h4>
+            <p>I run my own venture, so I understand business pressure from the inside.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-eyebrow reveal" style="--eyebrow-color: rgba(198,151,63,0.3)"><span>What I Offer</span></div>
+    <h2 class="section-title reveal">Services</h2>
+    <p class="section-desc reveal">Comprehensive executive and administrative support that keeps leaders focused on what matters most.</p>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon"><svg class="icon"><use href="#ic-cal"/></svg></div>
+        <h3>Executive Calendar Management</h3>
+        <p>Complex multi-timezone scheduling, meeting coordination, agenda preparation, and proactive deadline management for senior executives.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon"><svg class="icon"><use href="#ic-mail"/></svg></div>
+        <h3>Email &amp; Inbox Management</h3>
+        <p>Full inbox triage, prioritization, drafting professional responses, and ensuring nothing critical falls through the cracks.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon"><svg class="icon"><use href="#ic-doc"/></svg></div>
+        <h3>Document &amp; Report Preparation</h3>
+        <p>Creating, formatting, and managing professional documents, presentations, meeting minutes, and executive reports.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-icon"><svg class="icon"><use href="#ic-folder"/></svg></div>
+        <h3>Project Coordination</h3>
+        <p>Tracking timelines, coordinating teams and stakeholders, flagging delays, and keeping organized records across multiple projects.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-icon"><svg class="icon"><use href="#ic-plane"/></svg></div>
+        <h3>Travel &amp; Itinerary Planning</h3>
+        <p>End-to-end travel booking, destination research, itinerary coordination, and reservation confirmations for business travel.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-icon"><svg class="icon"><use href="#ic-chart"/></svg></div>
+        <h3>CRM &amp; Data Administration</h3>
+        <p>Maintaining accurate client records, managing lead pipelines, and ensuring data integrity across platforms including HubSpot.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">07</div>
+        <div class="service-icon"><svg class="icon"><use href="#ic-doc"/></svg></div>
+        <h3>Career Services</h3>
+        <p>Professional CV writing, LinkedIn profile optimization, and cover letter writing through Zuleiha Career Services.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">08</div>
+        <div class="service-icon"><svg class="icon"><use href="#ic-lock"/></svg></div>
+        <h3>Confidential Records Management</h3>
+        <p>Handling sensitive information with full discretion, maintaining organized digital filing systems with HIPAA compliance awareness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="container">
+    <div class="section-eyebrow reveal"><span>Tech Stack</span></div>
+    <h2 class="section-title reveal">Tools &amp; Platforms</h2>
+    <p class="section-desc reveal">I work confidently across all major remote collaboration and productivity platforms.</p>
+    <div class="tools-layout reveal">
+      <div class="tools-group">
+        <div class="tools-group-title">Productivity &amp; Office</div>
+        <div class="tools-list">
+          <span class="tool-pill">Microsoft 365</span>
+          <span class="tool-pill">Microsoft Word</span>
+          <span class="tool-pill">Microsoft Excel</span>
+          <span class="tool-pill">Microsoft PowerPoint</span>
+          <span class="tool-pill">Microsoft Outlook</span>
+          <span class="tool-pill">SharePoint</span>
+          <span class="tool-pill">Google Workspace</span>
+          <span class="tool-pill">Gmail</span>
+          <span class="tool-pill">Google Docs</span>
+          <span class="tool-pill">Google Sheets</span>
+          <span class="tool-pill">Google Calendar</span>
+        </div>
+      </div>
+      <div class="tools-group">
+        <div class="tools-group-title">Communication &amp; Collaboration</div>
+        <div class="tools-list">
+          <span class="tool-pill">Slack</span>
+          <span class="tool-pill">Zoom</span>
+          <span class="tool-pill">Trello</span>
+          <span class="tool-pill">Calendly</span>
+          <span class="tool-pill">Miro</span>
+          <span class="tool-pill">Jira</span>
+          <span class="tool-pill">WhatsApp Business</span>
+          <span class="tool-pill">Microsoft Teams</span>
+        </div>
+      </div>
+      <div class="tools-group">
+        <div class="tools-group-title">CRM &amp; Business Tools</div>
+        <div class="tools-list">
+          <span class="tool-pill">HubSpot CRM</span>
+          <span class="tool-pill">DocuSign</span>
+          <span class="tool-pill">Canva</span>
+          <span class="tool-pill">LinkedIn</span>
+          <span class="tool-pill">Asana</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS PROFICIENCY -->
+<section id="skills">
+  <div class="container">
+    <div class="section-eyebrow reveal"><span>Proficiency</span></div>
+    <h2 class="section-title reveal" style="color:var(--white)">Core <em>Competencies</em></h2>
+    <div class="skills-grid reveal" id="skillsGrid">
+      <div>
+        <div class="skill-category-title">Administrative &amp; Operations</div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Executive Calendar Management</div>
+          <span class="skill-level expert">Expert</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Email &amp; Inbox Management</div>
+          <span class="skill-level expert">Expert</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Document &amp; Report Preparation</div>
+          <span class="skill-level expert">Expert</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Multi-Client Coordination</div>
+          <span class="skill-level expert">Expert</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Travel &amp; Itinerary Planning</div>
+          <span class="skill-level advanced">Advanced</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Gatekeeping &amp; Prioritization</div>
+          <span class="skill-level expert">Expert</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Confidential Records Management</div>
+          <span class="skill-level advanced">Advanced</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-category-title">Tools &amp; Technology</div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Microsoft 365 Suite</div>
+          <span class="skill-level expert">Expert</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Google Workspace</div>
+          <span class="skill-level expert">Expert</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">HubSpot CRM</div>
+          <span class="skill-level advanced">Advanced</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Slack, Zoom &amp; Teams</div>
+          <span class="skill-level expert">Expert</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Trello &amp; Jira</div>
+          <span class="skill-level advanced">Advanced</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Asana</div>
+          <span class="skill-level proficient">Proficient</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">SharePoint &amp; DocuSign</div>
+          <span class="skill-level advanced">Advanced</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Miro</div>
+          <span class="skill-level expert">Expert</span>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-label">Canva</div>
+          <span class="skill-level proficient">Proficient</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-eyebrow reveal"><span>Career History</span></div>
+    <h2 class="section-title reveal">Professional <em>Experience</em></h2>
+    <div class="timeline reveal">
+
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-period">Feb 2026 – Present</span>
+          <span class="tl-company">PJY Group<br>Remote (US-based)</span>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">Executive Virtual Assistant</div>
+          <ul class="tl-bullets">
+            <li>Provide full remote executive support to a US-based client, managing daily operations, calendars, and correspondence across multiple platforms.</li>
+            <li>Advise client on task prioritization and flag critical deadlines to optimize daily workflow without requiring supervision.</li>
+            <li>Coordinate applications, track deadlines, and maintain organized digital records for multiple client accounts simultaneously.</li>
+            <li>Handle all client communications professionally, ensuring clear updates and timely follow-ups.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-period">2025 – Present</span>
+          <span class="tl-company">Zuleiha Career Services<br>Remote · Founder</span>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">Career Services &amp; Administrative Specialist</div>
+          <ul class="tl-bullets">
+            <li>Deliver remote administrative and document preparation services to clients across Nigeria and internationally.</li>
+            <li>Write professional CVs, LinkedIn profiles, and cover letters for clients at all career levels including senior executives.</li>
+            <li>Manage client communications, schedules, deadlines, and digital filing systems across multiple ongoing projects.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-period">2025</span>
+          <span class="tl-company">One17 Capital<br>Nigeria</span>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">Sales &amp; Client Relations Assistant</div>
+          <ul class="tl-bullets">
+            <li>Maintained accurate client records and lead pipelines within CRM software.</li>
+            <li>Handled all client correspondence and follow-ups to maintain strong professional relationships.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-period">2024</span>
+          <span class="tl-company">SERDEC Nigeria</span>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">Programme &amp; Administrative Assistant</div>
+          <ul class="tl-bullets">
+            <li>Provided full administrative support including correspondence, scheduling, meeting notes, and confidential records management.</li>
+            <li>Prepared reports and internal communications on behalf of the programme lead.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-period">2024</span>
+          <span class="tl-company">Merina Travels &amp; Tours<br>Nigeria</span>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">Front Desk &amp; Administrative Officer</div>
+          <ul class="tl-bullets">
+            <li>Managed front desk operations, client inquiries, appointment scheduling, payment processing, and record keeping.</li>
+            <li>Coordinated client travel bookings, destination research, itineraries, and reservation confirmations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-period">2021 – 2023</span>
+          <span class="tl-company">Ogiba Comprehensive School<br>Kano, Nigeria</span>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">School Administrator &amp; Lead Teacher</div>
+          <ul class="tl-bullets">
+            <li>Ran daily administrative operations for an entire academic arm, including staff scheduling, student records, assessments, and parent communications.</li>
+            <li>Served as primary coordination point between staff, management, and external visitors.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-meta">
+          <span class="tl-period">2021 – 2023</span>
+          <span class="tl-company">Aaron Sickle Cell Care Foundation<br>Nigeria</span>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">Quality Assurance Team Lead</div>
+          <ul class="tl-bullets">
+            <li>Reviewed organizational records for accuracy, flagged errors, and maintained quality standards across all documentation.</li>
+            <li>Led a small team and ensured consistent delivery of quality outputs across the organization.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-eyebrow reveal"><span>Work Highlights</span></div>
+    <h2 class="section-title reveal">Portfolio <em>Highlights</em></h2>
+    <p class="section-desc reveal">A selection of real work across executive assistance, operations and multi-client coordination showing the range of what I bring to every engagement.</p>
+    <div class="portfolio-grid reveal">
+
+      <div class="portfolio-card">
+        <div class="portfolio-card-header">
+          <h3>Executive Support at PJY Group</h3>
+          <p>Remote EA, US-based Client</p>
+        </div>
+        <div class="portfolio-card-body">
+          <p>Providing full remote executive support to a US-based client across multiple platforms. Responsibilities include calendar management, correspondence handling, daily operations oversight, task prioritization, and flagging critical deadlines proactively. All client communications managed independently with zero supervision required.</p>
+          <div class="portfolio-tags">
+            <span class="ptag">Executive Support</span>
+            <span class="ptag">Calendar Management</span>
+            <span class="ptag">Correspondence</span>
+            <span class="ptag">Remote Operations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-card-header">
+          <h3>Multi-Client Inbox and Calendar Management</h3>
+          <p>Simultaneous Account Operations</p>
+        </div>
+        <div class="portfolio-card-body">
+          <p>Managing multiple client accounts simultaneously, each with distinct inboxes, calendars, and communication preferences. Includes full inbox triage, scheduling across time zones, drafting responses, and ensuring nothing falls through the cracks between accounts. Tools used: Microsoft Outlook, Google Calendar, Calendly and Slack.</p>
+          <div class="portfolio-tags">
+            <span class="ptag">Inbox Triage</span>
+            <span class="ptag">Scheduling</span>
+            <span class="ptag">Time Zone Management</span>
+            <span class="ptag">Calendly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-card-header">
+          <h3>Travel and Itinerary Coordination</h3>
+          <p>Merina Travels and Tours</p>
+        </div>
+        <div class="portfolio-card-body">
+          <p>Managed end-to-end travel planning for clients including destination research, flight and hotel bookings, itinerary preparation, and reservation confirmations. Handled front desk operations, appointment scheduling, payment processing and client record keeping within a fast-paced travel services environment.</p>
+          <div class="portfolio-tags">
+            <span class="ptag">Travel Planning</span>
+            <span class="ptag">Itinerary Preparation</span>
+            <span class="ptag">Booking Coordination</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-card-header">
+          <h3>CRM and Client Records Administration</h3>
+          <p>One17 Capital</p>
+        </div>
+        <div class="portfolio-card-body">
+          <p>Maintained accurate client records and lead pipelines within CRM software for a capital firm. Managed all client correspondence and follow-ups to sustain strong professional relationships. Ensured data integrity across the platform and kept all records updated in real time with no duplication or gaps.</p>
+          <div class="portfolio-tags">
+            <span class="ptag">HubSpot CRM</span>
+            <span class="ptag">Lead Pipeline</span>
+            <span class="ptag">Data Integrity</span>
+            <span class="ptag">Client Relations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-card-header">
+          <h3>Programme Administration and Reporting</h3>
+          <p>SERDEC Nigeria</p>
+        </div>
+        <div class="portfolio-card-body">
+          <p>Provided full administrative support to a programme team including correspondence management, scheduling, meeting notes, and confidential records handling. Prepared internal reports and communications on behalf of the programme lead, ensuring accuracy, proper formatting and timely delivery every time.</p>
+          <div class="portfolio-tags">
+            <span class="ptag">Report Preparation</span>
+            <span class="ptag">Scheduling</span>
+            <span class="ptag">Confidential Records</span>
+            <span class="ptag">Stakeholder Comms</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-card-header">
+          <h3>Job Application and Document Management</h3>
+          <p>US-based Senior Professionals</p>
+        </div>
+        <div class="portfolio-card-body">
+          <p>Managing daily job applications for senior US-based professionals across technology risk, clinical research, and project scheduling. Sourcing roles, tailoring applications to each job description, tracking submissions across portals, and writing CVs and cover letters that have helped clients land interviews at ICRC, Ipsos, Christian Aid and global corporations.</p>
+          <div class="portfolio-tags">
+            <span class="ptag">Document Preparation</span>
+            <span class="ptag">ATS Platforms</span>
+            <span class="ptag">Multi-client Tracking</span>
+            <span class="ptag">CV Writing</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-eyebrow reveal"><span>Academic Background</span></div>
+    <h2 class="section-title reveal">Education &amp; <em>Certifications</em></h2>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <svg class="icon"><use href="#ic-grad"/></svg>
+        <div class="edu-degree">B.Sc. Botany</div>
+        <div class="edu-school">Bayero University, Kano</div>
+        <div class="edu-year">2023</div>
+      </div>
+      <div class="edu-card">
+        <svg class="icon"><use href="#ic-chart"/></svg>
+        <div class="edu-degree">Diploma in Data Analysis</div>
+        <div class="edu-school">AUA Tech Institute, Kano</div>
+        <div class="edu-year">2023</div>
+      </div>
+      <div class="edu-card">
+        <svg class="icon"><use href="#ic-user"/></svg>
+        <div class="edu-degree">Volunteer Coordinator</div>
+        <div class="edu-school">J Blood Match, Jela's Development Initiative</div>
+        <div class="edu-year">2023 – Present</div>
+      </div>
+    </div>
+    <div class="cert-grid reveal">
+      <div class="cert-item">
+        <svg class="icon-sm"><use href="#ic-award"/></svg>
+        Microsoft Office &amp; Data Analytics, AUA Tech Institute
+      </div>
+      <div class="cert-item">
+        <svg class="icon-sm"><use href="#ic-award"/></svg>
+        Customer Relationship Management (CRM)
+      </div>
+      <div class="cert-item">
+        <svg class="icon-sm"><use href="#ic-award"/></svg>
+        Exercising Leadership Training
+      </div>
+      <div class="cert-item">
+        <svg class="icon-sm"><use href="#ic-award"/></svg>
+        WHO Health Emergencies Program
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-eyebrow reveal"><span>Get in Touch</span></div>
+    <h2 class="section-title reveal">Let's Work <em>Together</em></h2>
+    <p class="section-desc reveal">Available immediately for remote Executive Assistant and VA roles. Reach out and let's talk about how I can support you.</p>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <a class="contact-link-card" href="mailto:Zuleiha00441@gmail.com">
+          <svg class="icon"><use href="#ic-mail"/></svg>
+          <div>
+            <h4>Email</h4>
+            <p>Zuleiha00441@gmail.com</p>
+          </div>
+        </a>
+        <a class="contact-link-card" href="mailto:zuleihacareerservices@gmail.com">
+          <svg class="icon"><use href="#ic-brief"/></svg>
+          <div>
+            <h4>Career Services</h4>
+            <p>zuleihacareerservices@gmail.com</p>
+          </div>
+        </a>
+        <a class="contact-link-card" href="tel:+2347033218295">
+          <svg class="icon"><use href="#ic-phone"/></svg>
+          <div>
+            <h4>Phone / WhatsApp</h4>
+            <p>+234 703 321 8295</p>
+          </div>
+        </a>
+        <a class="contact-link-card" href="https://www.linkedin.com/in/zuleiha-yunusa-1399b23b1" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-linkedin"/></svg>
+          <div>
+            <h4>LinkedIn</h4>
+            <p>Zuleiha Yunusa Ugbede</p>
+          </div>
+        </a>
+      </div>
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <h3>Send a Message</h3>
+        <p>I typically respond within 1-2 hours during business days.</p>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" name="company" placeholder="Company / Organisation (optional)">
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Tell me how I can support you..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">
+            <svg class="icon-sm"><use href="#ic-send"/></svg>
+            Send Message
+          </button>
+
+        </form>
+      </div>
+    </div>
+    <p class="contact-meta">Based in Kano, Nigeria &nbsp;·&nbsp; Available across US, EU &amp; EMEA time zones &nbsp;·&nbsp; 100% Remote</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© <span id="yr"></span> <em>Zuleiha Yunusa Ugbede</em> &nbsp;·&nbsp; Executive Virtual Assistant &nbsp;·&nbsp; Built with purpose</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<a href="#" class="btt" id="btt" aria-label="Back to top">
+  <svg class="icon-sm"><use href="#ic-up"/></svg>
+</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Nav scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('btt').classList.toggle('show', window.scrollY > 400);
+});
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+// Back to top
+document.getElementById('btt').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Reveal on scroll
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Skill bars
+const skillsObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.skill-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      skillsObs.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+const skillsGrid = document.getElementById('skillsGrid');
+if (skillsGrid) skillsObs.observe(skillsGrid);
+
+// Year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Resume button
+document.getElementById('resumeBtn').addEventListener('click', function(e) {
+  fetch('zuleiha-resume.pdf', { method: 'HEAD' }).catch(() => {
+    e.preventDefault();
+    alert('Rename your CV file to "zuleiha-resume.pdf" and place it in the same folder as this HTML file.');
+  });
+});
+</script>
+</body>
+</html>
